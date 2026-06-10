@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../barber"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "coredigital-site-2"
+	}
+}

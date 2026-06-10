@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#07070d" />
+<title>CoreDigital — אתרים שמביאים לקוחות</title>
+<meta name="description" content="בניית אתרים, דפי נחיתה, חנויות אונליין ואפליקציות מובייל ברמה הגבוהה ביותר." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Syne:wght@600;700;800&display=swap" />
+<link rel="stylesheet" href="styles.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="config.js" defer></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- ===== SPLASH SCREEN ===== -->
+<div class="splash" id="splash">
+  <div class="splash-code" id="splashCode"></div>
+  <div class="splash-center">
+    <div class="splash-logo">
+      <span class="splash-mark"></span>
+      <span class="splash-brand">CORE<b>DIGITAL</b></span>
+    </div>
+    <div class="splash-bar-wrap"><div class="splash-bar" id="splashBar"></div></div>
+    <div class="splash-pct" id="splashPct">0%</div>
+  </div>
+  <div class="splash-grid" aria-hidden="true"></div>
+</div>
+
+<!-- ===== CURSOR ===== -->
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- ===== BG ===== -->
+<div class="bg-blobs" aria-hidden="true">
+  <span class="blob blob-1"></span>
+  <span class="blob blob-2"></span>
+  <span class="blob blob-3"></span>
+  <div class="grid-overlay"></div>
+</div>
+
+<!-- ===== NAV ===== -->
+<header class="nav glass" id="nav">
+  <a href="#top" class="brand">
+    <span class="brand-mark"></span>
+    <span class="brand-text">CORE<b>DIGITAL</b></span>
+  </a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#services" class="nav-link">שירותים</a>
+    <a href="#work" class="nav-link">תיק עבודות</a>
+    <a href="#process" class="nav-link">תהליך</a>
+    <a href="#pricing" class="nav-link">מחירים</a>
+    <a href="#faq" class="nav-link">שאלות</a>
+  </nav>
+  <a href="#contact" class="btn-pill liquid-btn nav-cta"><span>דברו איתי</span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="תפריט">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Mobile overlay -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<main id="top">
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg-text" aria-hidden="true"><span>CORE · DIGITAL · STUDIO · CORE · DIGITAL · STUDIO ·</span></div>
+
+  <div class="hero-inner">
+    <div class="hero-badge glass"><span class="dot"></span> זמינים לפרויקטים חדשים · 2026</div>
+
+    <h1 class="hero-title">
+      <span class="reveal-line"><em>Upgrade</em> Your</span>
+      <span class="reveal-line">Digital <em>Reality</em></span>
+    </h1>
+
+    <p class="hero-sub">
+      אנחנו בונים אתרים, חנויות ואפליקציות שמרגישים כמו מהעתיד.
+      עיצוב <b>Liquid&nbsp;Glass</b>, אנימציות מטורפות ו־SEO שמביא לקוחות.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#contact" class="liquid-btn btn-lg"><span>בואו נדבר על הפרויקט →</span></a>
+      <a href="#work" class="ghost-btn btn-lg"><span>לתיק העבודות</span></a>
+    </div>
+
+    <div class="hero-scene" id="heroScene">
+      <div class="orb"></div>
+      <div class="orbit orbit-1"></div>
+      <div class="orbit orbit-2"></div>
+      <div class="orbit orbit-3"></div>
+      <div class="hero-phone" id="heroPhone">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <img id="heroPhoneImg" alt="" />
+        </div>
+      </div>
+      <span class="spark s1"></span><span class="spark s2"></span>
+      <span class="spark s3"></span><span class="spark s4"></span>
+    </div>
+
+    <div class="hero-stats glass-strong">
+      <div><b>120+</b><span>פרויקטים</span></div>
+      <div><b>1.2s</b><span>טעינה ממוצעת</span></div>
+      <div><b>98</b><span>ציון Lighthouse</span></div>
+      <div><b>5.0★</b><span>ביקורות לקוחות</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>React</span><span>·</span><span>Next.js</span><span>·</span><span>GSAP</span><span>·</span>
+    <span>Liquid Glass</span><span>·</span><span>SEO</span><span>·</span><span>Shopify</span><span>·</span>
+    <span>WordPress</span><span>·</span><span>React Native</span><span>·</span><span>Three.js</span><span>·</span>
+    <span>Performance 98+</span><span>·</span>
+    <span>React</span><span>·</span><span>Next.js</span><span>·</span><span>GSAP</span><span>·</span>
+    <span>Liquid Glass</span><span>·</span><span>SEO</span><span>·</span><span>Shopify</span><span>·</span>
+    <span>WordPress</span><span>·</span><span>React Native</span><span>·</span><span>Three.js</span><span>·</span>
+    <span>Performance 98+</span><span>·</span>
+  </div>
+</div>
+
+<!-- ===== BIG SCROLL TEXT ===== -->
+<section class="big-line-section">
+  <h2 class="big-line">
+    <span class="word">Control</span>
+    <span class="word"><i class="badge-icon">✶</i></span>
+    <span class="word">Your</span>
+    <span class="word">Brand,</span>
+    <span class="word"><i class="badge-icon">◎</i></span>
+    <span class="word">Manifest</span>
+    <span class="word">Growth.</span>
+  </h2>
+  <p class="big-line-sub">כל פרויקט מתחיל באסטרטגיה, ממשיך בעיצוב מטריף וננעל בקוד נקי כמו זכוכית.</p>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="section">
+  <div class="section-head">
+    <span class="kicker">מה אנחנו עושים</span>
+    <h2 class="section-title">פתרונות דיגיטל <em>שלמים</em></h2>
+    <p class="section-lead">מאסטרטגיה ועיצוב ועד פיתוח, השקה, SEO וקמפיינים — הכל מבית אחד.</p>
+  </div>
+  <div class="services-grid">
+    <article class="service glass"><div class="svc-icon">◈</div><h3>בניית אתרים</h3><p>אתרי תדמית מרהיבים עם אנימציות מתקדמות, מובייל פירסט ועיצוב Liquid Glass.</p></article>
+    <article class="service glass"><div class="svc-icon">◉</div><h3>חנויות אונליין</h3><p>Shopify ו־WooCommerce עם חוויית רכישה חלקה, סליקה, ניהול מלאי ואוטומציות.</p></article>
+    <article class="service glass"><div class="svc-icon">▲</div><h3>דפי נחיתה</h3><p>דפים ממירים לקמפיינים — מותאמים פסיכולוגית להמרה, עם A/B Testing.</p></article>
+    <article class="service glass"><div class="svc-icon">◆</div><h3>אפליקציות מובייל</h3><p>אפליקציות iOS / Android עם React Native — חוויית משתמש Native, התראות, פיירבייס.</p></article>
+    <article class="service glass"><div class="svc-icon">✦</div><h3>SEO ומהירות</h3><p>אופטימיזציה ל־Google, Core Web Vitals 98+, סכמות JSON-LD.</p></article>
+    <article class="service glass"><div class="svc-icon">✪</div><h3>מיתוג ועיצוב UI</h3><p>זהות חזותית, מערכת עיצוב, וטיפוגרפיה שמייצרת זיכרון מותג.</p></article>
+  </div>
+</section>
+
+<!-- ===== WORK ===== -->
+<section id="work" class="section work-section">
+  <div class="section-head">
+    <span class="kicker">תיק עבודות</span>
+    <h2 class="section-title">פרויקטים <em>שמדברים</em></h2>
+    <p class="section-lead">כל פרויקט — סיפור הצלחה.</p>
+  </div>
+
+  <!-- PROJECT 1 — תכלת הנדסה -->
+  <article class="project-row reveal-project">
+    <div class="project-devices">
+      <div class="device-desktop">
+        <div class="desktop-bar"><span></span><span></span><span></span></div>
+        <div class="desktop-screen">
+          <img src="תמונה.jpg/צילום מסך 2026-05-21 ב-12.03.47.png" alt="תכלת הנדסה desktop" loading="lazy" />
+        </div>
+        <div class="desktop-bezel-bottom"></div>
+        <div class="desktop-stand"></div>
+      </div>
+      <div class="device-phone">
+        <div class="phone-screen-wrap">
+          <img src="תמונה.jpg/צילום מסך 2026-05-21 ב-12.04.39.png" alt="תכלת הנדסה mobile" loading="lazy" />
+        </div>
+        <div class="phone-btn-side s1"></div>
+        <div class="phone-btn-side s2"></div>
+        <div class="phone-btn-side s3"></div>
+      </div>
+    </div>
+<div class="project-info">
+
+  <span class="project-tag">אתר תדמית</span>
+
+  <h3 class="project-name">תכלת הנדסה</h3>
+
+  <p class="project-desc">
+    אתר תדמית מקצועי לחברת הנדסה המתמחה בבדק בית, איתור ליקויי בנייה ובדיקות
+    נכסים. האתר פותח בקוד מותאם אישית עם דגש על מהירות, נראות יוקרתית וחוויית
+    משתמש מתקדמת. כולל תמיכה מלאה בעברית ובאנגלית, אופטימיזציה למנועי חיפוש
+    ומערכת המציגה את שירותי החברה בצורה ברורה, אמינה ומרשימה.
+  </p>
+
+  <div class="project-tags-row">
+    <span>HTML / CSS / JS</span>
+    <span>SEO Optimization</span>
+    <span>Responsive Design</span>
+  </div>
+
+  <a href="https://tkhelet-engineering.com"
+     target="_blank"
+     class="view-site-btn"
+     style="
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        padding:14px 28px;
+        margin-top:18px;
+        border-radius:18px;
+        background:rgba(255,255,255,.08);
+        border:1px solid rgba(255,255,255,.15);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+        box-shadow:0 8px 30px rgba(0,0,0,.15),
+                   inset 0 1px 0 rgba(255,255,255,.15);
+        color:#fff;
+        text-decoration:none;
+        font-weight:600;
+        transition:.35s;
+     ">
+     <button>צפה באתר</button>
+  </a>
+
+</div>
+  </article>
+
+  <!-- PROJECT 2 — CoreDigital -->
+  <article class="project-row project-row--reverse reveal-project">
+    <div class="project-devices">
+      <div class="device-desktop">
+        <div class="desktop-bar"><span></span><span></span><span></span></div>
+        <div class="desktop-screen">
+          <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-23.02.13.png" alt="CoreDigital desktop" loading="lazy" />
+        </div>
+        <div class="desktop-bezel-bottom"></div>
+        <div class="desktop-stand"></div>
+      </div>
+      <div class="device-phone">
+        <div class="phone-screen-wrap">
+          <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-23.02.41.png" alt="CoreDigital mobile" loading="lazy" />
+        </div>
+        <div class="phone-btn-side s1"></div>
+        <div class="phone-btn-side s2"></div>
+        <div class="phone-btn-side s3"></div>
+      </div>
+    </div>
+<div class="project-info">
+
+  <span class="project-tag">חנות אונליין</span>
+
+  <h3 class="project-name">Gino Vino</h3>
+
+  <p class="project-desc">
+    פיתוח חנות אונליין ואתר תדמית ייחודי בקוד אישי, המשלב חוויית משתמש חלקה,
+    אנימציות אלגנטיות ועיצוב מוקפד המשדר יוקרה ואמינות. האתר נבנה עם דגש על
+    מהירות, נוחות גלישה והגדלת יחס ההמרה, תוך התאמה מלאה למחשבים, טאבלטים
+    ומכשירים ניידים.
+  </p>
+
+  <div class="project-tags-row">
+    <span>Custom Code</span>
+    <span>UI/UX</span>
+    <span>Premium Design</span>
+  </div>
+
+  <a href="https://gino-vino.co.il"
+     target="_blank"
+     class="view-site-btn"
+     style="
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        padding:14px 28px;
+        margin-top:18px;
+        border-radius:18px;
+        background:rgba(255,255,255,.08);
+        border:1px solid rgba(255,255,255,.15);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+        box-shadow:0 8px 30px rgba(0,0,0,.15),
+                   inset 0 1px 0 rgba(255,255,255,.15);
+        color:#fff;
+        text-decoration:none;
+        font-weight:600;
+        transition:.35s;
+     ">
+      צפה באתר
+  </a>
+
+</div>
+  </article>
+
+  <!-- PROJECT 3 — SiteCraft -->
+  <article class="project-row reveal-project">
+    <div class="project-devices">
+      <div class="device-desktop">
+        <div class="desktop-bar"><span></span><span></span><span></span></div>
+        <div class="desktop-screen">
+          <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-22.57.51.png" alt="SiteCraft desktop" loading="lazy" />
+        </div>
+        <div class="desktop-bezel-bottom"></div>
+        <div class="desktop-stand"></div>
+      </div>
+      <div class="device-phone">
+        <div class="phone-screen-wrap">
+          <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-22.59.59.png" alt="SiteCraft mobile" loading="lazy" />
+        </div>
+        <div class="phone-btn-side s1"></div>
+        <div class="phone-btn-side s2"></div>
+        <div class="phone-btn-side s3"></div>
+      </div>
+    </div>
+<div class="project-info">
+
+  <span class="project-tag">אתר תדמית יוקרתי</span>
+
+  <h3 class="project-name">CIALO Boutique</h3>
+
+  <p class="project-desc">
+    אתר תדמית יוקרתי לוילת נופש בוטיק, שפותח בקוד אישי עם דגש על חוויית משתמש
+    ייחודית ועיצוב שמרגיש כמו חופשה מהרגע הראשון. האתר משלב גלריות ויזואליות
+    מרשימות, אנימציות חלקות, טעינה מהירה וממשק אלגנטי שמציג את המקום בצורה
+    יוקרתית ומגדיל משמעותית את כמות הפניות וההזמנות.
+  </p>
+
+  <div class="project-tags-row">
+    <span>Custom Website</span>
+    <span>Frontend</span>
+    <span>CRO</span>
+  </div>
+
+  <a href="#"
+     class="view-site-btn"
+     style="
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        padding:14px 28px;
+        margin-top:18px;
+        border-radius:18px;
+        background:rgba(255,255,255,.08);
+        border:1px solid rgba(255,255,255,.15);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+        box-shadow:0 8px 30px rgba(0,0,0,.15),
+                   inset 0 1px 0 rgba(255,255,255,.15);
+        color:#fff;
+        text-decoration:none;
+        font-weight:600;
+        transition:.35s;
+     ">
+      צפה באתר
+  </a>
+
+</div>
+  </article>
+
+  <!-- PROJECT 4 — Queue App (phone only) -->
+  <article class="project-row project-row--app reveal-project">
+    <div class="project-devices project-devices--phone-only">
+      <div class="device-phone-large">
+        <div class="phone-screen-wrap">
+          <img src="תמונה.jpg/IMG_8454.jpg" alt="Queue App" loading="lazy" />
+        </div>
+        <div class="phone-btn-side s1"></div>
+        <div class="phone-btn-side s2"></div>
+        <div class="phone-btn-side s3"></div>
+      </div>
+    </div>
+<div class="project-info">
+
+  <span class="project-tag">אפליקציית מובייל</span>
+
+  <h3 class="project-name">Queue App</h3>
+
+  <p class="project-desc">
+    אפליקציית ניהול תורים חכמה שפותחה עבור עסקים ונותני שירות. המערכת מאפשרת
+    קביעת תורים בקלות, ניהול לקוחות מתקדם, שליחת התראות בזמן אמת ומעקב מלא
+    אחר הפעילות היומית. האפליקציה נבנתה עם דגש על מהירות, נוחות שימוש וחוויית
+    משתמש מודרנית המספקת פתרון יעיל לבעלי עסקים וללקוחות כאחד.
+  </p>
+
+  <div class="project-tags-row">
+    <span>java script</span>
+    <span>Firebase</span>
+    <span>Push Notifications</span>
+  </div>
+
+  <a href="#"
+     class="view-site-btn"
+     style="
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        padding:14px 28px;
+        margin-top:18px;
+        border-radius:18px;
+        background:rgba(255,255,255,.08);
+        border:1px solid rgba(255,255,255,.15);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+        box-shadow:0 8px 30px rgba(0,0,0,.15),
+                   inset 0 1px 0 rgba(255,255,255,.15);
+        color:#fff;
+        text-decoration:none;
+        font-weight:600;
+        transition:.35s;
+     ">
+      צפה באפליקציה
+  </a>
+
+</div>
+  </article>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section id="process" class="section process-section">
+  <div class="section-head">
+    <span class="kicker">איך עובדים</span>
+    <h2 class="section-title">תהליך <em>בארבעה שלבים</em></h2>
+  </div>
+  <div class="process-grid">
+    <div class="step glass"><b>01</b><h3>שיחת אפיון</h3><p>מבינים את העסק, הקהל, המטרות ומגדירים KPI.</p></div>
+    <div class="step glass"><b>02</b><h3>עיצוב</h3><p>מוקאפ פיגמה מלא, אנימציות, אינטראקציות ואישור.</p></div>
+    <div class="step glass"><b>03</b><h3>פיתוח</h3><p>קוד נקי, מהיר, מובייל פירסט עם SEO מובנה.</p></div>
+    <div class="step glass"><b>04</b><h3>השקה ותחזוקה</h3><p>עליה לאוויר, חיבור Analytics, וליווי שוטף.</p></div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section id="pricing" class="section">
+  <div class="section-head">
+    <span class="kicker">מחירים</span>
+    <h2 class="section-title">חבילות <em>שקופות</em></h2>
+    <p class="section-lead">בלי הפתעות. בלי כוכביות. בחר את החבילה שמתאימה לך.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price glass">
+      <h3>Starter</h3><div class="price-num">₪890</div><span class="price-meta">דף נחיתה</span>
+      <ul><li>עד 5 סקשנים</li><li>אנימציות בסיסיות</li><li>טופס לידים</li><li>SEO בסיסי</li><li>זמן אספקה: 5 ימים</li></ul>
+      <a href="#contact" class="liquid-btn"><span>התחל</span></a>
+    </div>
+    <div class="price glass featured">
+      <div class="badge-pill">הכי פופולרי</div>
+      <h3>Business</h3><div class="price-num">₪2,490</div><span class="price-meta">אתר תדמית</span>
+      <ul><li>עד 8 עמודים</li><li>אנימציות מתקדמות (GSAP)</li><li>בלוג / CMS</li><li>SEO מלא + Schema</li><li>זמן אספקה: 14 ימים</li></ul>
+      <a href="#contact" class="liquid-btn"><span>בחר חבילה</span></a>
+    </div>
+    <div class="price glass">
+      <h3>Store</h3><div class="price-num">₪3,990</div><span class="price-meta">חנות אונליין</span>
+      <ul><li>Shopify / Woo</li><li>סליקה + משלוחים</li><li>עד 50 מוצרים</li><li>חיבור פייסבוק / טיקטוק</li><li>זמן אספקה: 21 ימים</li></ul>
+      <a href="#contact" class="liquid-btn"><span>הקם חנות</span></a>
+    </div>
+    <div class="price glass">
+      <h3>Custom</h3><div class="price-num">₪4,990+</div><span class="price-meta">אפליקציה / מותאם</span>
+      <ul><li>React Native / Web App</li><li>שרת + DB</li><li>משתמשים + תשלומים</li><li>ליווי שוטף</li><li>זמן אספקה: 30+ ימים</li></ul>
+      <a href="#contact" class="liquid-btn"><span>קבל הצעה</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section">
+  <div class="section-head">
+    <span class="kicker">לקוחות מספרים</span>
+    <h2 class="section-title">אהבה <em>אמיתית</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi glass"><p>"האתר החדש העלה לי את ההמרות ב־42% תוך חודש. מומלץ בלי שניות."</p><b>— יואב מ., מסעדן</b></div>
+    <div class="testi glass"><p>"רמת העיצוב והאנימציות שונה מכל מה שראיתי בארץ. שווה כל שקל."</p><b>— נטע ב., יזמת</b></div>
+    <div class="testi glass"><p>"אפליקציה שעבדה מהיום הראשון, חוויית משתמש מטורפת."</p><b>— רון ל., סטארטאפ</b></div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="section">
+  <div class="section-head">
+    <span class="kicker">שאלות נפוצות</span>
+    <h2 class="section-title">כל מה <em>שרציתם לדעת</em></h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq glass"><summary>כמה זמן לוקח לבנות אתר?<i>+</i></summary><p>בין 5 ימים לדף נחיתה ועד 30 יום לחנות / אפליקציה. אתר תדמית סטנדרטי — סביב שבועיים.</p></details>
+    <details class="faq glass"><summary>מי כותב את התכנים?<i>+</i></summary><p>אנחנו עוזרים בכתיבה — או שאתה מספק תכנים והעיצוב נבנה סביבם.</p></details>
+    <details class="faq glass"><summary>האם האתר מותאם למובייל?<i>+</i></summary><p>בוודאי. אנחנו בונים Mobile First, ובודקים בכל המכשירים לפני העלייה לאוויר.</p></details>
+    <details class="faq glass"><summary>יש תחזוקה לאחר ההשקה?<i>+</i></summary><p>כן — מסלולי תחזוקה חודשיים מ־₪290, או לפי שעה.</p></details>
+    <details class="faq glass"><summary>אפשר לעדכן את האתר לבד?<i>+</i></summary><p>כן — אנו מקימים ממשק ניהול (CMS) כך שתעדכן טקסטים, תמונות ובלוג בקלות.</p></details>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section contact-section">
+  <div class="contact-card glass-strong">
+    <span class="kicker">בואו נתחיל</span>
+    <h2 class="section-title">מוכן <em>להשתדרג?</em></h2>
+    <p class="section-lead">השאר פרטים ונחזור אליך תוך 24 שעות עם הצעת מחיר מותאמת.</p>
+    <form class="contact-form" onsubmit="event.preventDefault();window.open('https://wa.me/972505120820?text=' + encodeURIComponent('שלום, אני מעוניין באתר. שמי: ' + (this.name.value||'')), '_blank');">
+      <input name="name" placeholder="שם מלא" required />
+      <input name="phone" placeholder="טלפון" required />
+      <input name="email" type="email" placeholder="אימייל" required />
+      <textarea name="message" placeholder="ספר לנו על הפרויקט..." rows="3"></textarea>
+      <button class="liquid-btn btn-lg" type="submit"><span>שלח דרך וואטסאפ →</span></button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div>© <span id="year"></span> CoreDigital — Built with ❤ in Tel Aviv</div>
+  <div class="footer-links">
+    <a href="#services">שירותים</a>
+    <a href="#work">עבודות</a>
+    <a href="#pricing">מחירים</a>
+    <a href="#contact">צור קשר</a>
+  </div>
+</footer>
+
+</main>
+
+<!-- WhatsApp Float -->
+<a class="wa-float" href="https://wa.me/972505120820" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.523 5.273l-.999 3.648 3.965-1.62zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+</a>
+
+</body>
+</html>
