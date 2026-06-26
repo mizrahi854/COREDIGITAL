@@ -119,6 +119,9 @@
     document.body.style.overflow = "hidden"; // Absolute scroll lock for pristine user experience
   }
 
+
+  
+
   function closeBurgerMenu() {
     navLinks.classList.remove("active");
     menuToggle.classList.remove("open");
