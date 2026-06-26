@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#06060f"/>
+
+<title>CoreDigital — סטודיו בוטיק לטכנולוגיה ודיגיטל | אתרי יוקרה ומכונות המרה</title>
+<meta name="description" content="אנחנו לא בונים סתם אתרים. CoreDigital היא סטודיו לעיצוב ופיתוח פלטפורמות דיגיטליות יוקרתיות בקוד נקי, חוויית משתמש קיצונית ואנימציות מתקדמות שממירות מבקרים ללקוחות משלמים בשטח."/>
+<link rel="canonical" href="https://coredigital.co.il"/>
+<meta name="robots" content="index, follow"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://coredigital.co.il"/>
+<meta property="og:title" content="CoreDigital — סטודיו בוטיק לטכנולוגיה ודיגיטל | אתרי יוקרה"/>
+<meta property="og:description" content="עיצוב פרמיום פורץ דרך, קוד מותאם אישית ב-100%, מהירות טעינה קיצונית ואסטרטגיית המרה שהופכת כל מבקר לליד חם."/>
+<meta property="og:image" content="https://coredigital.co.il/assets/og-premium-brand.jpg"/>
+<meta property="og:locale" content="he_IL"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:url" content="https://coredigital.co.il"/>
+<meta name="twitter:title" content="CoreDigital — סטודיו בוטיק לטכנולוגיה ודיגיטל"/>
+<meta name="twitter:description" content="פלטפורמות דיגיטליות יוקרתיות בקוד נקי, חוויית משתמש קיצונית ואנימציות מתקדמות שממירות מבקרים ללקוחות."/>
+<meta name="twitter:image" content="https://coredigital.co.il/assets/og-premium-brand.jpg"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Syne:wght@600;700;800&display=swap" rel="stylesheet"/>
+
+<link rel="stylesheet" href="styles.css"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js" defer></script>
+<script src="script.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "CoreDigital",
+  "image": "https://coredigital.co.il/assets/og-premium-brand.jpg",
+  "description": "פיתוח ועיצוב אתרי פרמיום, דפי נחיתה ממירים ופתרונות אוטומציה מתקדמים בקוד מותאם אישית.",
+  "telephone": "+972505120820",
+  "url": "https://coredigital.co.il",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Safed",
+    "addressCountry": "IL"
+  },
+  "priceRange": "$$$$",
+  "areaServed": "Israel",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  }
+}
+</script>
+
+<style>
+/* ================================================================
+   LIQUID GLASS BURGER MENU — Apple VisionOS / iOS Style
+   SVG-based lines — no CSS/JS conflicts
+   ================================================================ */
+
+/* ── BURGER BUTTON (Liquid Glass Circle) ── */
+.menu-toggle {
+  display: none;
+  position: relative;
+  z-index: 10010;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  /* Liquid Glass */
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(28px) saturate(200%) brightness(1.1);
+  -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.20),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+    0 8px 32px rgba(124, 92, 252, 0.20),
+    0 2px 8px rgba(0, 0, 0, 0.40),
+    0 0 0 0.5px rgba(255, 255, 255, 0.05) inset;
+  transition:
+    background 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  -webkit-tap-highlight-color: transparent;
+  overflow: visible;
+}
+
+/* SVG inside the button */
+.burger-svg {
+  display: block;
+  overflow: visible;
+}
+
+/* The two SVG lines */
+.b-line {
+  transform-origin: 24px 24px;
+  transition:
+    transform 0.52s cubic-bezier(0.34, 1.15, 0.64, 1),
+    opacity 0.3s ease;
+  will-change: transform;
+}
+
+/* OPEN STATE — rotate into ✕ */
+.menu-toggle.open {
+  background: rgba(124, 92, 252, 0.16);
+  border-color: rgba(124, 92, 252, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+    0 8px 48px rgba(124, 92, 252, 0.40),
+    0 2px 12px rgba(0, 0, 0, 0.45),
+    0 0 0 0.5px rgba(124, 92, 252, 0.15) inset;
+}
+
+/* Top line: pivot around centre of circle, rotate +45° */
+.menu-toggle.open .b-top {
+  transform: translate(0px, 0px) rotate(45deg);
+  /* Move top line down to centre (y:20 → centre 24, diff = 4px) */
+  transform: translateY(4px) rotate(45deg);
+  /* And extend to match bottom for symmetric X */
+  d: path("M13,20 L35,20"); /* keeps original coords, rotation does the work */
+}
+
+/* Bottom line: pivot, rotate −45°; also move up to centre (y:28 → 24, diff = −4px) and extend */
+.menu-toggle.open .b-bot {
+  transform: translateY(-4px) rotate(-45deg);
+  /* Extend short line to same length as top */
+  stroke-dasharray: none;
+}
+
+/* We use a JS class trick: set stroke x2 dynamically. 
+   Simpler: just set transform so lines cross at centre */
+/* Re-declare cleanly using transform-origin on each line's midpoint */
+.b-top { transform-origin: 24px 20px; }
+.b-bot { transform-origin: 19.5px 28px; }
+
+.menu-toggle.open .b-top {
+  transform: translateY(4px) rotate(45deg);
+}
+.menu-toggle.open .b-bot {
+  /* short line needs to extend — we fake it by scaling X */
+  transform: translateY(-4px) scaleX(1.69) rotate(-45deg);
+}
+
+/* Hover glow */
+@media (hover: hover) {
+  .menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.11);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.22),
+      0 8px 40px rgba(124, 92, 252, 0.32),
+      0 2px 10px rgba(0, 0, 0, 0.45);
+    transform: scale(1.06);
+  }
+  .menu-toggle.open:hover {
+    transform: scale(1.06);
+  }
+}
+
+/* ── MOBILE OVERLAY (Full-screen blur) ── */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  background: rgba(4, 4, 15, 0.55);
+  backdrop-filter: blur(30px) saturate(140%);
+  -webkit-backdrop-filter: blur(30px) saturate(140%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── SIDE PANEL (Apple VisionOS Liquid Glass) ── */
+@media (max-width: 900px) {
+
+  .menu-toggle { display: flex; align-items: center; justify-content: center; }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(320px, 85vw);
+    height: 100dvh;
+    z-index: 10000;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0;
+    padding: 80px 36px 48px;
+
+    /* Liquid Glass panel */
+    background: rgba(8, 6, 24, 0.55);
+    backdrop-filter: blur(48px) saturate(180%) brightness(1.15);
+    -webkit-backdrop-filter: blur(48px) saturate(180%) brightness(1.15);
+    border-right: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+      -24px 0 80px rgba(0, 0, 0, 0.5),
+      -1px 0 0 rgba(255, 255, 255, 0.06),
+      inset 1px 0 0 rgba(255, 255, 255, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      0 0 120px rgba(124, 92, 252, 0.12);
+
+    transform: translateX(100%);
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+
+  .nav-links::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    pointer-events: none;
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+  }
+
+  .nav-link {
+    display: block;
+    width: 100%;
+    padding: 16px 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: rgba(240, 238, 255, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    letter-spacing: -0.3px;
+    position: relative;
+    opacity: 0;
+    transform: translateX(24px);
+    transition:
+      opacity 0.35s ease,
+      transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1),
+      color 0.2s ease;
+  }
+
+  .nav-links.active .nav-link { opacity: 1; transform: translateX(0); }
+  .nav-links.active .nav-link:nth-child(1) { transition-delay: 0.08s; }
+  .nav-links.active .nav-link:nth-child(2) { transition-delay: 0.13s; }
+  .nav-links.active .nav-link:nth-child(3) { transition-delay: 0.18s; }
+  .nav-links.active .nav-link:nth-child(4) { transition-delay: 0.23s; }
+  .nav-links.active .nav-link:nth-child(5) { transition-delay: 0.28s; }
+  .nav-links.active .nav-link:nth-child(6) { transition-delay: 0.33s; }
+
+  .nav-cta { display: none !important; }
+
+  .nav-links::after {
+    content: "בניית נכס דיגיטלי ←";
+    display: block;
+    position: absolute;
+    bottom: 48px;
+    right: 36px;
+    left: 36px;
+    text-align: center;
+    padding: 14px 24px;
+    border-radius: 100px;
+    background: linear-gradient(135deg, var(--purple), var(--purple-deep));
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    box-shadow: 0 8px 32px rgba(124, 92, 252, 0.38);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease 0.38s, transform 0.4s cubic-bezier(0.34,1.2,0.64,1) 0.38s;
+    pointer-events: none;
+  }
+
+  .nav-links.active::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================================================
+   MOBILE-FIRST LAYOUT ENHANCEMENTS
+   ================================================================ */
+
+/* ── NAVIGATION BAR ── */
+.nav {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 32px);
+  max-width: var(--max);
+  height: var(--nav-h);
+  padding: 0 20px;
+  background: rgba(8, 6, 24, 0.65);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 24px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35), 0 0 0 0.5px rgba(255,255,255,0.04) inset;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── HERO — MOBILE ── */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: calc(var(--nav-h) + 48px);
+    min-height: auto;
+  }
+
+  .hero-inner {
+    padding: 0 20px 60px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(32px, 9vw, 52px);
+    line-height: 1.15;
+  }
+
+  .hero-x-sub {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero-cta .liquid-btn,
+  .hero-cta .ghost-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 16px !important;
+    font-size: 13px;
+  }
+
+  .hero-stats > div:last-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Hide 3D cube on mobile for performance */
+  .hero-x-cube-wrapper { display: none; }
+}
+
+/* ── SECTION GENERIC — MOBILE ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 20px;
+  }
+
+  .section-title {
+    font-size: clamp(26px, 7vw, 40px);
+    line-height: 1.2;
+  }
+
+  .section-lead {
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+}
+
+/* ── STORY SECTION — MOBILE ── */
+@media (max-width: 768px) {
+  .story-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .story-container {
+    padding: 0 20px;
+  }
+
+  .story-title {
+    font-size: clamp(28px, 8vw, 44px);
+    line-height: 1.2;
+  }
+
+  .story-description {
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+
+  .story-quote {
+    padding: 28px 20px;
+  }
+
+  .story-quote h3 {
+    font-size: 18px;
+  }
+
+  .story-bg-word {
+    font-size: clamp(80px, 25vw, 160px);
+  }
+}
+
+/* ── WHY SECTION — MOBILE ── */
+@media (max-width: 768px) {
+  .why-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0;
+  }
+
+  .why-vs {
+    text-align: center;
+    padding: 16px 0;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--muted);
+  }
+
+  .why-card {
+    padding: 24px !important;
+  }
+
+  .why-card ul {
+    font-size: 13.5px;
+  }
+}
+
+/* ── SERVICES — MOBILE ── */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+
+  .service {
+    padding: 24px !important;
+  }
+}
+
+/* ── PORTFOLIO — MOBILE ── */
+@media (max-width: 768px) {
+  .project-row {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    padding: 24px !important;
+  }
+
+  .project-row--reverse {
+    direction: ltr;
+  }
+
+  .project-row--reverse > * {
+    direction: rtl;
+  }
+
+  .project-devices-wrapper {
+    margin-bottom: 0;
+  }
+
+  .project-devices {
+    transform: none !important;
+    perspective: none !important;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* On mobile: show only phone mockup, hide desktop */
+  .device-desktop {
+    display: none !important;
+  }
+
+  .device-phone {
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    width: 160px !important;
+    height: 280px !important;
+  }
+
+  .project-name {
+    font-size: 24px;
+  }
+
+  .project-desc {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .project-tags-row {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .project-tags-row span {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
+
+/* ── PROCESS — MOBILE ── */
+@media (max-width: 768px) {
+  .process-steps {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+
+  .step {
+    padding: 22px !important;
+  }
+
+  .step-num {
+    font-size: 28px !important;
+  }
+}
+
+/* ── TESTIMONIALS — MOBILE ── */
+@media (max-width: 768px) {
+  .testi-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .testi {
+    padding: 24px !important;
+  }
+
+  .testi-text {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+
+/* ── PRICING — MOBILE ── */
+@media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px;
+  }
+
+  .price {
+    padding: 24px !important;
+  }
+
+  .price ul li {
+    font-size: 13px;
+  }
+
+  .price-num b {
+    font-size: 28px !important;
+  }
+}
+
+/* ── FAQ — MOBILE ── */
+@media (max-width: 768px) {
+  .faq-list {
+    max-width: 100%;
+  }
+
+  .faq summary {
+    padding: 18px 16px;
+    font-size: 15px;
+  }
+
+  .faq p {
+    padding: 0 16px 18px;
+    font-size: 13.5px;
+  }
+}
+
+/* ── CONTACT — MOBILE ── */
+@media (max-width: 768px) {
+  #contact .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px;
+  }
+
+  .contact-info-block .section-title {
+    font-size: clamp(24px, 6.5vw, 36px);
+  }
+
+  .contact-lead {
+    font-size: 14px;
+  }
+}
+
+/* ── URGENCY — MOBILE ── */
+@media (max-width: 768px) {
+  .urgency-inner {
+    padding: 32px 20px !important;
+    text-align: center;
+  }
+
+  .urgency-inner h2 {
+    font-size: clamp(22px, 6vw, 36px);
+    line-height: 1.3;
+  }
+
+  .urgency-inner p {
+    font-size: 14px;
+  }
+
+  .urgency-action {
+    text-align: center;
+  }
+
+  .urgency-action .liquid-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ── FOOTER — MOBILE ── */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .footer-links {
+    gap: 14px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+    font-size: 11px;
+  }
+}
+
+/* ── BUTTONS — MOBILE TOUCH TARGETS ── */
+@media (max-width: 768px) {
+  .liquid-btn,
+  .ghost-btn,
+  .view-site-btn {
+    min-height: 50px;
+    font-size: 15px;
+    padding: 14px 24px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .wa-float {
+    bottom: 16px;
+    left: 16px;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* ── TOUCH FEEDBACK ── */
+@media (max-width: 900px) {
+  .liquid-btn:active,
+  .ghost-btn:active,
+  .view-site-btn:active {
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+}
+
+/* ── SAFE AREA SUPPORT (iPhone notch / Dynamic Island) ── */
+@supports (padding: max(0px)) {
+  .nav {
+    top: max(16px, env(safe-area-inset-top));
+  }
+  .nav-links {
+    padding-top: max(80px, calc(env(safe-area-inset-top) + 64px));
+    padding-bottom: max(48px, env(safe-area-inset-bottom));
+  }
+  .wa-float {
+    bottom: max(16px, env(safe-area-inset-bottom));
+    left: max(16px, env(safe-area-inset-left));
+  }
+}
+
+/* ── SMALL PHONES (< 380px) ── */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .nav {
+    padding: 0 14px;
+  }
+
+  .brand-text {
+    font-size: 16px !important;
+  }
+
+  .nav-links {
+    width: 92vw;
+    padding: 80px 24px 48px;
+  }
+
+  .nav-links::after {
+    right: 24px;
+    left: 24px;
+    font-size: 14px;
+  }
+
+  .section {
+    padding: 52px 16px;
+  }
+}
+
+/* ── LANDSCAPE PHONES ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .nav-links {
+    padding-top: 72px;
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
+
+  .nav-link {
+    padding: 12px 0;
+    font-size: 17px;
+  }
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  .nav-links,
+  .nav-link,
+  .burger-line-top,
+  .burger-line-bot,
+  .mobile-overlay {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<a href="#mainContent" class="skip-link">דלג לתוכן המרכזי</a>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<div class="splash" id="splash" role="status" aria-live="polite">
+  <div class="splash-grid" aria-hidden="true"></div>
+  <div class="splash-code" id="splashCode" aria-hidden="true"></div>
+  <div class="splash-center">
+    <div class="splash-phone" aria-hidden="true">
+      <div class="splash-phone-island"></div>
+      <div class="splash-phone-glow"></div>
+      <div class="splash-phone-lines">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="splash-logo">CORE<b>DIGITAL</b></div>
+    <div class="splash-bar-wrap"><div class="splash-bar" id="splashBar"></div></div>
+    <div class="splash-pct" id="splashPct">0%</div>
+  </div>
+</div>
+
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<div class="blob-wrap" aria-hidden="true">
+  <span class="blob blob-1"></span>
+  <span class="blob blob-2"></span>
+  <span class="blob blob-3"></span>
+</div>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="brand" aria-label="CoreDigital - דף הבית">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-text">CORE<b>DIGITAL</b></span>
+  </a>
+  <nav class="nav-links" id="navLinks" aria-label="תפריט ראשי">
+    <a href="#story" class="nav-link">החזון שלנו</a>
+    <a href="#services" class="nav-link">שירותים</a>
+    <a href="#work" class="nav-link">עבודות מהפנטות</a>
+    <a href="#process" class="nav-link">אסטרטגיה</a>
+    <a href="#pricing" class="nav-link">השקעה</a>
+    <a href="#faq" class="nav-link">שאלות נפוצות</a>
+  </nav>
+  <a href="#contact" class="liquid-btn nav-cta btn-magnetic"><span>בניית נכס דיגיטלי ←</span></a>
+  <!-- Liquid Glass Burger Button -->
+  <button class="menu-toggle" id="menuToggle" aria-label="פתח תפריט" aria-expanded="false" aria-controls="navLinks">
+    <svg class="burger-svg" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line class="b-line b-top" x1="13" y1="20" x2="35" y2="20" stroke="rgba(255,255,255,0.92)" stroke-width="1.8" stroke-linecap="round"/>
+      <line class="b-line b-bot" x1="13" y1="28" x2="26" y2="28" stroke="rgba(255,255,255,0.92)" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  </button>
+</header>
+<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+
+<main id="mainContent">
+
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-badge glass">
+        <span class="dot" aria-hidden="true"></span>
+        <span>זמינות מוגבלת בלבד לפרויקטים החודש</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="reveal-line"><span>אנחנו לא בונים אתרים.</span></span>
+        <span class="reveal-line"><span>אנחנו יוצרים <em>מכונות לקוחות</em>.</span></span>
+      </h1>
+      <p class="hero-x-sub">
+        ממשקי קצה עילית, מנוהלי ביצועים ומתוכננים כמו מוצרים מהעתיד. אנחנו מתיכים עיצוב סינמטי מותאם אישית יחד עם פסיכולוגיית המרה אגרסיבית כדי להפוך מותגים למובילי קטגוריה בלתי מעורערים.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="liquid-btn btn-lg btn-magnetic"><span>שריין שיחת אפיון אסטרטגית עכשיו ←</span></a>
+        <a href="#work" class="ghost-btn btn-lg btn-magnetic"><span>צפה ביצירות האחרונות</span></a>
+      </div>
+
+      <div class="hero-x-cube-wrapper" aria-hidden="true">
+        <div class="hero-x-cube" id="cube">
+          <div class="cube-glow"></div>
+          <div class="cube">
+            <div class="face f1"></div>
+            <div class="face f2"></div>
+            <div class="face f3"></div>
+            <div class="face f4"></div>
+            <div class="face f5"></div>
+            <div class="face f6"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-stats glass">
+        <div>
+          <b class="counter" data-target="35">0</b>
+          <span>% עלייה ממוצעת בהמרות</span>
+        </div>
+        <div>
+          <b class="counter" data-target="100">0</b>
+          <span>% קוד נקי מותאם אישית</span>
+        </div>
+        <div>
+          <b class="counter" data-target="1">0</b>
+          <span>s מהירות טעינה ממוצעת</span>
+        </div>
+        <div>
+          <b class="counter" data-target="5">0</b>
+          <span>% ממוצע ימי העסקים לקבלת האתר</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="premium-story-section" id="story">
+    <div class="story-bg-word" aria-hidden="true">DIGITAL</div>
+    <div class="story-container">
+      <div class="story-kicker">BUILT FOR ABSOLUTE DOMINANCE</div>
+      <h2 class="story-title">רוב העסקים <span>מתרסקים</span> ברושם הראשוני.</h2>
+      <p class="story-description">
+        בתוך פחות מ-3 שניות, המבקר באתר שלך יקבע האם אתה מותג על ששווה להשקיע בו, או עוד עסק גנרי חולף. רוב האתרים בשוק נכשלים כי הם נבנו על תבניות לעוסות ואיטיות שלא מניעות לפעולה. אנחנו ב-CoreDigital יוצרים חוויות דיגיטליות שאי אפשר להתעלם מהן — שילוב של יוקרה ויזואלית חסרת פשרות והנדסת המרה ממוקדת תוצאות.
+      </p>
+      <div class="story-grid">
+        <div class="story-card glass">
+          <span class="story-number" aria-hidden="true">01</span>
+          <h3>רושם ראשוני מהפנט</h3>
+          <p>עיצוב סינמטי מותאם אישית שגורם ללקוח להבין מיד שהוא הגיע למקצוענים ביותר בשוק.</p>
+        </div>
+        <div class="story-card glass">
+          <span class="story-number" aria-hidden="true">02</span>
+          <h3>הנדסת אנוש מנצחת</h3>
+          <p>ניווט אינטואיטיבי, אלגנטי וחלק שמנחה את המשתמש פסיכולוגית ישירות אל כפתור הפנייה.</p>
+        </div>
+        <div class="story-card glass">
+          <span class="story-number" aria-hidden="true">03</span>
+          <h3>ארכיטקטורת המרה (CRO)</h3>
+          <p>כל אלמנט, כותרת, תנועה וטופס מתוכננים ומנוסחים במטרה הבלעדית של הגדלת מחזורי המכירות שלך.</p>
+        </div>
+      </div>
+      <div class="story-quote glass">
+        <span class="quote-label">החוק החדש של הדיגיטל ב-2026</span>
+        <h3>האתר שלך חייב לעבוד ולסגור עסקאות — גם כשאתה ישן.</h3>
+        <p>אתר אינטרנט הוא לא כרטיס ביקור דיגיטלי זרוק. הוא איש המכירות החזק, המרשים והיעיל ביותר של העסק שלך, שעובד 24 שעות ביממה ללא הפסקה.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why-section">
+    <div class="section-head">
+      <span class="kicker">ההבדל בין שרידה לצמיחה קיצונית</span>
+      <h2 class="section-title">האמת המרה: למה <em>רוב האתרים נכשלים</em></h2>
+      <p class="section-lead">כ-90% מהאתרים ברשת לא מייצרים לידים ולא מחזירים את ההשקעה שלהם. לא בגלל היעדר תקציב, אלא בגלל ארכיטקטורה חובבנית.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card glass why-bad">
+        <div class="why-icon bad" aria-hidden="true">✗</div>
+        <h3>אתר שבלוני וזול</h3>
+        <ul>
+          <li>תבניות WordPress ו-Elementor כבדות ומסורבלות</li>
+          <li>מהירות טעינה איטית (4-8 שניות) שמבריחה לקוחות</li>
+          <li>נראות גנרית ומשעממת שנראית בדיוק כמו המתחרים</li>
+          <li>חוסר באופטימיזציה למנועי חיפוש ו-SEO חובבני</li>
+          <li>אחוז המרה נמוך שמבזבז את תקציבי הפרסום שלך</li>
+          <li>תלות בתוספים שבירים, פריצות אבטחה ותחזוקה יקרה</li>
+        </ul>
+      </div>
+      <div class="why-vs" aria-hidden="true">VS</div>
+      <div class="why-card glass why-good">
+        <div class="why-icon good" aria-hidden="true">✓</div>
+        <h3>נכס דיגיטלי ב-CoreDigital</h3>
+        <ul>
+          <li>קוד נקי ומותאם אישית (HTML5, CSS3, JS Vanilla) ב-100%</li>
+          <li>מהירות טעינה פנומנלית של פחות משנייה אחת לקצוות שרת</li>
+          <li>עיצוב יוקרתי, חדשני וייחודי שממצב אותך כאוטוריטה</li>
+          <li>SEO אגרסיבי מובנה מהשורש כולל ארכיטקטורת Schema</li>
+          <li>חוויית משתמש פסיכולוגית שממקסמת פניות, לידים וטלפונים</li>
+          <li>מערכת מאובטחת, יציבה לחלוטין וללא עלויות תחזוקה מותרות</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="urgency-section">
+    <div class="urgency-inner glass-strong">
+      <div class="urgency-badge">⚡ סטטוס: זמינות מוגבלת בלבד ללקוחות החודש</div>
+      <h2>כל יום שבו האתר שלך אינו בטופ<br/><em>הוא יום שבו הלקוחות עוברים למתחרים.</em></h2>
+      <p>השוק של שנת 2026 לא סלחן לחובבנות. הלקוחות הפוטנציאליים שלך מחפשים את הטוב ביותר — ואם האתר שלך לא משדר מובילות אולימפית ברגע הראשון, הם פשוט ימשיכו הלאה אל המתחרה הבא שמציג חזות של חברת ענק.</p>
+      <div class="urgency-action">
+        <a href="#contact" class="liquid-btn btn-lg btn-magnetic"><span>עצור את בריחת הלקוחות עכשיו</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section services-section">
+    <div class="section-head">
+      <span class="kicker">פתרונות טכנולוגיים ודיגיטליים עילית</span>
+      <h2 class="section-title">ההתמחויות <em>של הסטודיו</em></h2>
+      <p class="section-lead">אנחנו לא מאמינים בפתרונות מדף גנריים. כל פרויקט בסטודיו מתוכנן מאפס עם הנדסת אנוש מנצחת וקוד קיצוני בהתאמה אישית מלאה.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service glass">
+        <div class="svc-icon" aria-hidden="true">✦</div>
+        <h3>אתרי תדמית ודפי נחיתה פרמיום</h3>
+        <p>פיתוח אתרי מותג מהפנטים ודפי נחיתה בעלי אחוזי המרה קיצוניים, המבוססים על קוד נקי לחלוטין, סגנון ה-Liquid Glass, תנועות חלקות ומובייל פירסט מושלם.</p>
+      </article>
+      <article class="service glass">
+        <div class="svc-icon" aria-hidden="true">◉</div>
+        <h3>חנויות אונליין ואיקומרס פרמיום</h3>
+        <p>פנות סחר מתקדמות ומאובטחות, חוויית רכישה מהירה בסטנדרטים הבינלאומיים הגבוהים ביותר, אוטומציות חכמות וסנכרון מלא למערכות ניהול מלאי וסליקה מובילות.</p>
+      </article>
+      <article class="service glass">
+        <div class="svc-icon" aria-hidden="true">◆</div>
+        <h3>אפליקציות מובייל ו-Web Apps</h3>
+        <p>פיתוח אפליקציות מותאמות אישית למובייל ולדפדפן, ארכיטקטורת Firebase חזקה, ממשקי ניהול מתקדמים, מהירות טעינה חסרת תקדים וניהול משתמשים חלק ומאובטח.</p>
+      </article>
+      <article class="service glass">
+        <div class="svc-icon" aria-hidden="true">✦</div>
+        <h3>אופטימיזציית מהירות ו-SEO</h3>
+        <p>שיפוץ ואופטימיזציה של מדדי Core Web Vitals של גוגל לציון מושלם של 95+ בלייטהאוס, הטמעת קודי Schema JSON-LD מתקדמים ובניית תשתית קוד אופטימלית לקידום אורגני מוביל.</p>
+      </article>
+      <article class="service glass">
+        <div class="svc-icon" aria-hidden="true">✪</div>
+        <h3>עיצוב אסטרטגי חכם UI/UX</h3>
+        <p>תכנון חוויית משתמש קפדנית, מחקר קהלי יעד מעמיק, יצירת ממשקים יוקרתיים וארגונומיים ב-Figma השומרים על זהות המותג ומייצרים בידול תחרותי מוחלט בשוק.</p>
+      </article>
+      <article class="service glass">
+        <div class="svc-icon" aria-hidden="true">✓</div>
+        <h3>אוטומציות ואינטגרציות קצה</h3>
+        <p>חיבור האתר או האפליקציה למערכות ה-CRM של העסק, מערכות דיוור, WhatsApp, סליקה, ומערכות ניהול פנימיות לייעול תהליכי העבודה וחיסכון משמעותי בזמן ומשאבים.</p>
+      </article>
+    </div>
+  </section>
+
+<section id="work" class="section work-section">
+  <div class="section-head">
+    <span class="kicker">מוצרים דיגיטליים שעובדים ומנצחים</span>
+    <h2 class="section-title">תיק עבודות <em>שאומר הכל</em></h2>
+    <p class="section-lead">הצצה קטנה לפלטפורמות דיגיטליות שפיתחנו עבור חברות ומותגים מובילים, שהחליטו להפסיק להתפשר ולהתחיל להוביל.</p>
+  </div>
+
+  <article class="project-row project-row--reverse">
+    <div class="project-devices-wrapper">
+      <div class="project-devices">
+        <div class="device-desktop">
+          <div class="desktop-bar"><span></span><span></span><span></span></div>
+          <div class="desktop-screen">
+            <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-23.02.13.png" alt="אתר ג'ינו וינו דסקטופ" loading="lazy"/>
+          </div>
+          <div class="desktop-bezel-bottom"></div>
+          <div class="desktop-stand"></div>
+        </div>
+        <div class="device-phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-23.02.41.png" alt="אתר ג'ינו וינו מובייל" loading="lazy"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="project-info">
+      <span class="project-tag">חנות אונליין פרימיום</span>
+      <h3 class="project-name">Gino Vino</h3>
+      <p class="project-desc">פיתוח חנות בוטיק יוקרתית לאלכוהול ויינות פרימיום הכוללת מעל 450 מוצרים מורכבים. שילוב מערכת אימות גיל אינטראקטיבית חלקה, ניהול מלאי חכם, חוויית רכישה מהירה ב-3 קליקים בלבד (One-Page Checkout) ואינטראקציות מעבר אלגנטיות המשקפות את האופי והיוקרה של המותג הפיזי בדיגיטל.</p>
+      <div class="project-tags-row"><span>Custom E-Commerce</span><span>Next-Gen UI/UX</span><span>Micro-Interactions</span><span>Advanced Security</span></div>
+      <a href="https://gino-vino.co.il" target="_blank" rel="noopener" class="view-site-btn btn-magnetic"><span>חווה את חנות היוקרה ←</span></a>
+    </div>
+  </article>
+
+  <article class="project-row">
+    <div class="project-devices-wrapper">
+      <div class="project-devices">
+        <div class="device-desktop">
+          <div class="desktop-bar"><span></span><span></span><span></span></div>
+          <div class="desktop-screen">
+            <img src="תמונה.jpg/צילום מסך 2026-05-21 ב-12.03.47.png" alt="אתר תכלת הנדסה דסקטופ" loading="lazy"/>
+          </div>
+          <div class="desktop-bezel-bottom"></div>
+          <div class="desktop-stand"></div>
+        </div>
+        <div class="device-phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <img src="תמונה.jpg/צילום מסך 2026-05-21 ב-12.04.39.png" alt="אתר תכלת הנדסה מובייל" loading="lazy"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="project-info">
+      <span class="project-tag">פלטפורמה הנדסית ומערך שיווק</span>
+      <h3 class="project-name">תכלת הנדסה</h3>
+      <p class="project-desc">פיתוח אתר אסטרטגי ומערכי שיווק ממוקדים לחברת בדק הבית והביקורת ההנדסית של מוטי אדרי בצפון הארץ. האתר מציג מערך הוכחות חברתיות חזק, קייס-סטאדיס אינטראקטיביים של ליקויים וטפסי פנייה מתוחכמים המותאמים פסיכולוגית לקהל היעד ומייצרים זרם קבוע ואיכותי של פניות בלעדיות.</p>
+      <div class="project-tags-row"><span>Conversion Strategy</span><span>Responsive Architecture</span><span>RTL Optimal</span><span>Lead Generation</span></div>
+      <a href="https://tkhelet-engineering.com" target="_blank" rel="noopener" class="view-site-btn btn-magnetic"><span>חווה את אתר האוטוריטה ←</span></a>
+    </div>
+  </article>
+
+  <article class="project-row project-row--reverse">
+    <div class="project-devices-wrapper">
+      <div class="project-devices">
+        <div class="device-desktop">
+          <div class="desktop-bar"><span></span><span></span><span></span></div>
+          <div class="desktop-screen">
+            <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-22.57.51.png" alt="אתר CIALO Boutique דסקטופ" loading="lazy"/>
+          </div>
+          <div class="desktop-bezel-bottom"></div>
+          <div class="desktop-stand"></div>
+        </div>
+        <div class="device-phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-22.59.59.png" alt="אתר CIALO Boutique מובייל" loading="lazy"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="project-info">
+      <span class="project-tag">אתר תדמית יוקרתי</span>
+      <h3 class="project-name">CIALO Boutique</h3>
+      <p class="project-desc">וילת נופש בוטיק — פיתוח אתר פרמיום המבוסס על גלריות מרהיבות, תנועות חלקות ואנימציות אלגנטיות. ממשק משתמש קפדני המעצים את תחושת היוקרה, מגדיל משמעותית את אחוזי ההמרה ומייצר זרם פניות ישיר ואקסקלוסיבי.</p>
+      <div class="project-tags-row"><span>Premium UI/UX</span><span>Smooth Animations</span><span>High Conversion</span></div>
+      <a href="#contact" class="view-site-btn btn-magnetic"><span>צפה ביצירה ←</span></a>
+    </div>
+  </article>
+
+  <article class="project-row">
+    <div class="project-devices-wrapper">
+      <div class="project-devices">
+        <div class="device-desktop" style="opacity: 0; pointer-events: none;"></div>
+        <div class="device-phone" style="transform: translateZ(40px) scale(1.1); right: 50%; margin-right: -50px;">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <img src="תמונה.jpg/IMG_8454.jpg" alt="Queue App מסך אפליקציה" loading="lazy"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="project-info">
+      <span class="project-tag">אפליקציית מובייל (PWA)</span>
+      <h3 class="project-name">Queue App</h3>
+      <p class="project-desc">אפליקציית ניהול תורים חכמה לעסקים. פלטפורמה המאפשרת קביעת תורים מהירה, ניהול לקוחות מתקדם, עבודה מול מסד נתונים בזמן אמת והתראות Push ישירות למכשיר הלקוח, מותאם באופן מלא ל-iOS ו-Android.</p>
+      <div class="project-tags-row"><span>Vanilla JS</span><span>Firebase</span><span>Push Notifications</span><span>Web App</span></div>
+      <a href="#contact" class="view-site-btn btn-magnetic"><span>צפה באפליקציה ←</span></a>
+    </div>
+  </article>
+</section>
+
+  <section id="process" class="section process-section">
+    <div class="section-head">
+      <span class="kicker">איך אנחנו הופכים רעיון לנכס מניב</span>
+      <h2 class="section-title">ארבעת שלבי <em>האסטרטגיה</em></h2>
+      <p class="section-lead">ההצלחה של הנכס הדיגיטלי שלך אינה מקרית. היא תוצאה של תהליך עבודה מדויק, מדעי ומתוכנן בקפידה.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step glass">
+        <span class="step-num" aria-hidden="true">01</span>
+        <h3>מחקר ואפיון אסטרטגי (CRO)</h3>
+        <p>צוללים לעומק העסק, מנתחים את החוזקות, קהל היעד והמתחרים שלכם. בונים ארכיטקטורת המרה קפדנית ומבנה תוכן מדויק המכוון למטרה עסקית אחת — מקסום פניות.</p>
+      </div>
+      <div class="step glass">
+        <span class="step-num" aria-hidden="true">02</span>
+        <h3>עיצוב יוקרתי (Figma Premium UI)</h3>
+        <p>יוצרים קונספט ויזואלי ייחודי ומרהיב בסטנדרט פרמיום בינלאומי. כל מעבר, כפתור, ריווח ואנימציה מתוכננים בקפידה ליצירת רושם ראשוני מהפנט וחיזוק אמון המותג בשניות.</p>
+      </div>
+      <div class="step glass">
+        <span class="step-num" aria-hidden="true">03</span>
+        <h3>פיתוח קוד קיצוני ו-SEO מובנה</h3>
+        <p>מתרגמים את העיצוב לקוד נקי, מאובטח וסופר-מהיר ללא פשרות וללא מערכות כבדות ומסורבלות. מטמיעים תשתית קידום אורגני מושלמת ומבצעים התאמה מוחלטת לכל סוגי המסכים.</p>
+      </div>
+      <div class="step glass">
+        <span class="step-num" aria-hidden="true">04</span>
+        <h3>ניהול בדיקות, השקה וליווי</h3>
+        <p>בדיקות קפדניות של ביצועים, נגישות ואבטחה בכל מכשיר אפשרי, העלאה חלקה לשרתי ענן מהירים וחיבור למערכות אנליטיקס מתקדמות לעקב אחר הביצועים והגידול הדרמטי בפניות.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section testimonials-section">
+    <div class="section-head">
+      <span class="kicker">לקוחות מרוצים, תוצאות מוכחות בשטח</span>
+      <h2 class="section-title">הם בחרו ב-CoreDigital <em>והזניקו את העסק</em></h2>
+      <p class="section-lead">אנחנו לא מאמינים במילים יפות, אלא במספרים ובתוצאות עסקיות אמיתיות של בעלי עסקים ששינו את המציאות הדיגיטלית שלהם.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi glass testi-premium">
+        <div class="testi-stars" aria-label="דירוג 5 כוכבים">★★★★★</div>
+        <p class="testi-text">"הגעתי ל-CoreDigital אחרי שהחלפתי שלושה מפתחי אתרים שונים. רמת ההבנה האסטרטגית, המהירות והעיצוב היו פשוט בליגה אחרת. האתר החדש הקפיץ לנו את אחוז ההמרות בקמפיינים ב-42% מהחודש הראשון! חוויה מטורפת ושווה כל שקל."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">י</div>
+          <div>
+            <b>יואב מזרחי</b>
+            <span>מנכ"ל ומייסד, קבוצת הים הגדול</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi glass testi-premium">
+        <div class="testi-stars" aria-label="דירוג 5 כוכבים">★★★★★</div>
+        <p class="testi-text">"העבודה מול סטודיו קורדיגיטל הייתה מהירה, חלקה ומקצועית מעל המצופה. הקוד שנכתב במיוחד עבורנו סיפק מהירות טעינה פנומנלית של פחות משנייה, וזכינו למחמאות רבות מלקוחות על העיצוב היוקרתי והנקי. הלידים שמגיעים דרך האתר חמים ואיכותיים בהרבה מבעבר."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">ד</div>
+          <div>
+            <b>דנה רוטשילד</b>
+            <span>סמנכ"לית שיווק, נדל"ן גלובל</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="section pricing-section">
+    <div class="section-head">
+      <span class="kicker">השקעה שקופה ומניבה</span>
+      <h2 class="section-title">חבילות פיתוח <em>ללא אותיות קטנות</em></h2>
+      <p class="section-lead">אנחנו מאמינים בשקיפות מוחלטת. כל פרויקט הוא נכס דיגיטלי אסטרטגי שנבנה במטרה להחזיר את ההשקעה במהירות ולייצר רווחים ארוכי טווח.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price glass">
+        <div class="price-head">
+          <h3>דף נחיתה אסטרטגי עילית</h3>
+          <p>הפתרון המושלם לקמפיינים ממומנים ממוקדי תוצאות גבוהות.</p>
+        </div>
+        <div class="price-num"><span>החל מ-</span><b>₪899</b></div>
+        <ul>
+          <li>עיצוב Premium UI/UX מותאם אישית ב-100%</li>
+          <li>פיתוח קוד נקי ומהיר (LightHouse 95+)</li>
+          <li>מחקר שוק, כתיבה שיווקית וארכיטקטורת CRO</li>
+          <li>דפי תודה וטפסים חכמים</li>
+          <li>אופטימיזציה מלאה למובייל (Mobile-First)</li>
+          <li>תשתית SEO בסיסית ואינטגרציות אנליטיקס</li>
+        </ul>
+        <div class="price-action">
+          <a href="https://wa.me/972505120820?text=היי,%20אני%20מעוניין%20לרכוש%20אתר%20בחבילת%20דף%20נחיתה%20אסטרטגי%20עילית%20שבחרתי" target="_blank" rel="noopener" class="view-site-btn btn-magnetic">
+            <span>מתאים לי, בוא נדבר ←</span>
+          </a>
+        </div>
+      </div>
+      <div class="price glass price-popular">
+        <div class="price-badge">✦ הפופולרי ביותר</div>
+        <div class="price-head">
+          <h3>אתר תדמית ומותג מותאם אישית</h3>
+          <p>נכס דיגיטלי מקיף הממצב את העסק כמוביל שוק ומייצר לידים חמים.</p>
+        </div>
+        <div class="price-num"><span>החל מ-</span><b>₪1,750</b></div>
+        <ul>
+          <li>עד 5 עמודי קוד מותאמים אישית (ללא תבניות גנריות)</li>
+          <li>עיצוב סינמטי, אנימציות מתקדמות (60FPS) ואפקטי זכוכית</li>
+          <li>תשתית SEO אגרסיבית מובנת מהשורש כולל קודי Schema</li>
+          <li>חוויית מובייל וטאבלט ארגונומית ומושלמת לחלוטין</li>
+          <li>מערכת ניהול תוכן חכמה וקלה לתפעול לפי דרישה</li>
+          <li>ליווי, הדרכה, בדיקות QA קפדניות ותמיכה מלאה בהשקה</li>
+        </ul>
+        <div class="price-action">
+          <a href="https://wa.me/972505120820?text=היי,%20אני%20מעוניין%20לרכוש%20אתר%20בחבילת%20אתר%20תדמית%20ומותג%20מותאם%20אישית%20שבחרתי" target="_blank" rel="noopener" class="view-site-btn btn-magnetic">
+            <span>מתאים לי, בוא נדבר ←</span>
+          </a>
+        </div>
+      </div>
+      <div class="price glass">
+        <div class="price-head">
+          <h3>פלטפורמת איקומרס או פיתוח מורכב</h3>
+          <p>מערכות סחר, חנויות בוטיק ואפליקציות Web מותאמות אישית.</p>
+        </div>
+        <div class="price-num"><span>החל מ-</span><b>₪5,000</b></div>
+        <ul>
+          <li>חנות סחר או אפליקציה מורכבת מאובטחת ומותאמת אישית</li>
+          <li>חוויית רכישה מהירה (One-Page Checkout) למקסום מכירות</li>
+          <li>אינטגרציה מלאה למערכות ניהול מלאי, סליקה וחשבוניות</li>
+          <li>ארכיטקטורת מסד נתונים (Firebase / Node.js) חזקה ויציבה</li>
+          <li>מערכות סינון מתקדמות, ניהול משתמשים ואוטומציות קצה</li>
+          <li>אופטימיזציית Core Web Vitals קיצונית לביצועי על</li>
+        </ul>
+        <div class="price-action">
+          <a href="https://wa.me/972505120820?text=היי,%20אני%20מעוניין%20לרכוש%20אתר%20בחבילת%20פלטפורמת%20איקומרס%20או%20פיתוח%20מורכב%20שבחרתי" target="_blank" rel="noopener" class="view-site-btn btn-magnetic">
+            <span>מתאים לי, בוא נדבר ←</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section faq-section">
+    <div class="section-head">
+      <span class="kicker">תשובות שקופות לשאלות חשובות</span>
+      <h2 class="section-title">שאלות <em>נפוצות</em></h2>
+      <p class="section-lead">כדי לבנות אמון מלא, ריכזנו עבורכם את התשובות לשאלות החשובות ביותר שמעסיקות בעלי עסקים לפני שדרוג הנכס הדיגיטלי שלהם.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq glass">
+        <summary>מה זה אומר פיתוח אתר בקוד מותאם אישית (Custom Code)?<i>+</i></summary>
+        <p>בניגוד לרוב המפתחים בשוק שבונים על תבניות מוכנות של וורדפרס, אלמנטור או וויקס — אנחנו כותבים את הקוד של האתר שלך מאפס (HTML5, CSS3, JavaScript Vanilla). המשמעות היא שהאתר שלך שוקל שבריר ממה ששוקל אתר רגיל, הוא מהיר בצורה קיצונית, מאובטח לחלוטין מפני פריצות, ואין לו שום מגבלה עיצובית או פונקציונלית. אתה מקבל מוצר ייחודי שתפור במאה אחוז לצרכים ולמותג שלך.</p>
+      </details>
+      <details class="faq glass">
+        <summary>למה מהירות הטעינה של האתר כל כך קריטית לעסק שלי?<i>+</i></summary>
+        <p>הסטטיסטיקה מראה שמעל ל-50% מהגולשים ינטשו את האתר אם הוא לא נטען בתוך 2 שניות. בנוסף, גוגל מענישה אתרים איטיים ומורידה אותם בתוצאות החיפוש. אתר סופר-מהיר שמקבל ציון 95+ בלייטהאוס מבטיח שאתה לא מאבד לקוחות פוטנציאליים בגלל זמני טעינה מעצבנים וממקסם את האפקטיביות של תקציבי השיווק שלך.</p>
+      </details>
+      <details class="faq glass">
+        <summary>מה היא גישת Mobile-First ולמה היא חובה בשנת 2026?<i>+</i></summary>
+        <p>תהליך התכנון והפיתוח שלנו מבוסס על גישת Mobile-First מחמירה. המשמעות היא שהאתר מתוכנן ומותאם ארגונומית ומחשבתית קודם כל לחוויית השימוש בנייד — שבו נמצאים מעל ל-85% מהלקוחות הפוטנציאליים שלך — ועובר בדיקות קפדניות בכל סוגי המכשירים והדפדפנים לפני העלייה לאוויר.</p>
+      </details>
+      <details class="faq glass">
+        <summary>האם תעזרו לי בניסוח וכתיבת התכנים והטקסטים השיווקיים לאתר?<i>+</i></summary>
+        <p>בוודאי. אנו משלבים כתיבה שיווקית (Copywriting) וארכיטקטורת המרה (CRO) כחלק בלתי נפרד מתהליך העבודה. אנחנו לא משאירים אתכם לבד עם טקסטים יבשים; אנו דואגים שכל כותרת, משפט וקריאה לפעולה באתר ינוסחו בצורה פסיכולוגית מנצחת שמניעה את המבקר להשאיר פרטים או לבצע רכישה.</p>
+      </details>
+      <details class="faq glass">
+        <summary>האם האתר מגיע מוכן לקידום בגוגל (SEO)?<i>+</i></summary>
+        <p>בהחלט. אנחנו בונים את האתר עם תשתית SEO אגרסיבית מובנית מהשורש. זה כולל קוד נקי, היררכיית כותרות נכונה, שימוש בתגיות Schema למנועי חיפוש, אופטימיזציה לתמונות וזמני טעינה אפסיים. השילוב הזה גורם לגוגל "לאהוב" את האתר שלך ולהעדיף אותו בתוצאות החיפוש על פני אתרים כבדים ומסורבלים.</p>
+      </details>
+      <details class="faq glass">
+        <summary>מה קורה אחרי שהאתר עולה לאוויר? יש למי לפנות?<i>+</i></summary>
+        <p>אנחנו לא נעלמים אחרי ההשקה. אנחנו ב-CoreDigital מאמינים בליווי אישי. בנוסף להדרכה מלאה על האתר, אנחנו זמינים עבורך לכל שאלה, עדכון טכני או תמיכה שוטפת שתצטרך. אנחנו רואים בעצמנו שותפים לדרך של העסק שלך וחשוב לנו שהנכס הדיגיטלי ימשיך לעבוד עבורך בצורה מושלמת לאורך זמן.</p>
+      </details>
+    </div>
+  </section>
+
+<section id="contact" class="section contact-section">
+  <div class="contact-grid">
+    <div class="contact-info-block">
+      <span class="kicker">בוא נבנה את העתיד שלך יחד</span>
+      <h2 class="section-title">מוכן להפוך את המותג שלך ל<em>אימפריה דיגיטלית</em>?</h2>
+      <p class="contact-lead">אל תשאיר את ההצלחה שלך ליד המקרה. צור קשר עכשיו לשיחת ייעוץ ואפיון אסטרטגית, ונגלה יחד איך להזניק את העסק שלך עם נכס דיגיטלי ברמה בינלאומית.</p>
+      <div class="contact-quick">
+        <div class="cq-item glass">
+          <span class="cq-icon">✉</span>
+          <div>
+            <span>שלח לנו מייל</span>
+            <strong>yanimizrahi@gmail.com</strong>
+          </div>
+        </div>
+        <div class="cq-item glass">
+          <span class="cq-icon">☎</span>
+          <div>
+            <span>מענה מהיר בטלפון</span>
+            <strong>050-5120820</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-card glass-strong">
+      <h3>שריין שיחת אפיון אסטרטגית</h3>
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label>שם מלא</label>
+          <input type="text" id="clientName" placeholder="ישראל ישראלי" required/>
+        </div>
+        <div class="form-group">
+          <label>מספר טלפון</label>
+          <input type="tel" id="clientPhone" placeholder="0501234567" required/>
+        </div>
+        <div class="form-group">
+          <label>בחר את השירות המבוקש</label>
+          <select id="clientService">
+            <option value="לא סגור/צריך עזרה להחליט">צריך עזרה להחליט (ייעוץ)</option>
+            <option value="דף נחיתה אסטרטגי">דף נחיתה אסטרטגי</option>
+            <option value="אתר תדמית ומותג">אתר תדמית ומותג מותאם אישית</option>
+            <option value="פלטפורמת איקומרס/פיתוח מורכב">פלטפורמת איקומרס או פיתוח מורכב</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>ספר לנו על הפרויקט</label>
+          <textarea id="clientMsg" rows="3" placeholder="אני רוצה לשדרג את המותג שלי ו..."></textarea>
+        </div>
+        <button type="button" onclick="sendToWhatsApp()" class="liquid-btn btn-lg btn-block">
+          <span>שלח פרטים לוואצאפ ←</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+function sendToWhatsApp() {
+  const name = document.getElementById('clientName').value;
+  const phone = document.getElementById('clientPhone').value;
+  const service = document.getElementById('clientService').value;
+  const msg = document.getElementById('clientMsg').value;
+  if (!name || !phone) { alert("נא למלא שם ומספר טלפון"); return; }
+  const text = `היי, אני רוצה להתייעץ על פרויקט חדש!%0A%0A` +
+               `שם: ${name}%0A` +
+               `טלפון: ${phone}%0A` +
+               `השירות הנבחר: ${service}%0A` +
+               `פרטים נוספים: ${msg}`;
+  window.open(`https://wa.me/972505120820?text=${text}`, '_blank');
+}
+</script>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="brand-text">CORE<b>DIGITAL</b></span>
+      <p>Digital & Technology Studio specializing in premium websites, conversion machines, and custom cloud architecture.</p>
+    </div>
+    <nav class="footer-links" aria-label="ניווט תחתון">
+      <a href="#story">החזון</a>
+      <a href="#services">שירותים</a>
+      <a href="#work">עבודות</a>
+      <a href="#pricing">חבילות השקעה</a>
+      <a href="#contact">יצירת קשר אסטרטגי</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span id="year">2026</span> CoreDigital. All Rights Reserved. Crafted with absolute premium code.</span>
+    <span>Engineered like a sports car.</span>
+  </div>
+</footer>
+
+<a class="wa-float btn-magnetic" href="https://wa.me/972505120820" target="_blank" rel="noopener" aria-label="מענה מהיר ומיידי בוואטסאפ">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm4.467-3.99l.301.18a9.856 9.856 0 005.26 1.513c5.441 0 9.865-4.424 9.868-9.866a9.814 9.814 0 00-2.89-6.98 9.816 9.816 0 00-6.983-2.89c-5.442 0-9.867 4.424-9.87 9.866 0 2.001.523 3.954 1.517 5.68l.197.345-1.002 3.66 3.743-.982zm11.455-5.37c-.265-.132-1.564-.772-1.807-.86-.242-.088-.418-.132-.593.132-.176.265-.68.86-.834 1.034-.155.175-.31.194-.575.062-.265-.132-1.119-.413-2.133-1.319-.788-.703-1.32-1.572-1.475-1.837-.155-.265-.017-.409.116-.54.12-.118.265-.31.397-.465.131-.155.176-.265.265-.442.088-.176.044-.331-.022-.463-.066-.132-.593-1.43-.812-1.956-.214-.514-.448-.444-.619-.453-.16-.008-.343-.01-.528-.01a1.018 1.018 0 00-.738.344c-.252.276-.965.943-.965 2.3 0 1.355.987 2.664 1.125 2.847.137.182 1.942 2.966 4.706 4.158.657.284 1.171.453 1.57.58.66.21 1.26.18 1.734.11.53-.078 1.564-.639 1.785-1.257.221-.617.221-1.147.155-1.257-.066-.111-.242-.176-.507-.308z"/></svg>
+</a>
+
+<!-- ================================================================
+     LIQUID GLASS BURGER MENU — Enhanced Script
+     ================================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks   = document.getElementById('navLinks');
+  const overlay    = document.getElementById('mobileOverlay');
+
+  if (!menuToggle || !navLinks || !overlay) return;
+
+  function openMenu() {
+    navLinks.classList.add('active');
+    menuToggle.classList.add('open');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuToggle.setAttribute('aria-label', 'סגור תפריט');
+    overlay.classList.add('visible');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    // Prevent scroll on iOS
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+  }
+
+  function closeMenu() {
+    navLinks.classList.remove('active');
+    menuToggle.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'פתח תפריט');
+    overlay.classList.remove('visible');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+  }
+
+  menuToggle.addEventListener('click', function() {
+    navLinks.classList.contains('active') ? closeMenu() : openMenu();
+  });
+
+  overlay.addEventListener('click', closeMenu);
+
+  // Close on nav link click
+  navLinks.querySelectorAll('.nav-link').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+      closeMenu();
+      menuToggle.focus();
+    }
+  });
+
+  // Close when resizing back to desktop
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 900 && navLinks.classList.contains('active')) {
+      closeMenu();
+    }
+  });
+
+  // Prevent panel scroll-through on iOS
+  navLinks.addEventListener('touchmove', function(e) {
+    e.stopPropagation();
+  }, { passive: true });
+
+})();
+</script>
+
+</body>
+</html>
