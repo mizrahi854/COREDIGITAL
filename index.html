@@ -30,6 +30,14 @@
 
 <link rel="stylesheet" href="styles.css"/>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" as="script">
+
+<style>
+  .nav { visibility: visible; } /* מבטיח רינדור מיידי */
+</style>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js" defer></script>
@@ -67,36 +75,48 @@
    ================================================================ */
 
 /* ── BURGER BUTTON (Liquid Glass Circle) ── */
+/* תיקון קריטי ל-Z-index ולחצני המבורגר */
 .menu-toggle {
-  display: none;
-  position: relative;
-  z-index: 10010;
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  border-radius: 50%;
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 0;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  /* Liquid Glass */
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(28px) saturate(200%) brightness(1.1);
-  -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.1);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.20),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.12),
-    0 8px 32px rgba(124, 92, 252, 0.20),
-    0 2px 8px rgba(0, 0, 0, 0.40),
-    0 0 0 0.5px rgba(255, 255, 255, 0.05) inset;
-  transition:
-    background 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  -webkit-tap-highlight-color: transparent;
-  overflow: visible;
+    display: none;
+    position: relative;
+    z-index: 10020; /* הגבהה כדי להבטיח נגישות */
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(28px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto; /* הבטחת לחיצה */
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 900px) {
+    .menu-toggle { display: flex; }
+    
+    .nav-links {
+        z-index: 10015;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        /* ביטול נעילת ה-body הבעייתית ב-CSS */
+    }
+}
+
+.mobile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10010;
+    background: rgba(4, 4, 15, 0.6);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* SVG inside the button */
@@ -360,16 +380,25 @@
     text-align: center;
   }
 
-  .hero-stats {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
-    padding: 16px !important;
-    font-size: 13px;
+.hero-stats {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* שני טורים שווים */
+    gap: 16px !important;
+    padding: 20px !important;
   }
-
+  
+  /* מחיקת העיצוב הישן שהוביל לטור אחד או שורות מוזרות */
+  .hero-stats > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
   .hero-stats > div:last-child {
-    grid-column: 1 / -1;
+    grid-column: span 1; /* מוודא שלא יתפרס על כל השורה האחרונה */
   }
+}
 
   /* Hide 3D cube on mobile for performance */
   .hero-x-cube-wrapper { display: none; }
@@ -463,15 +492,17 @@
 }
 
 /* ── PORTFOLIO — MOBILE ── */
+/* ── PORTFOLIO — MOBILE (החזרת המראה הדומה לווב) ── */
 @media (max-width: 768px) {
   .project-row {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr !important; /* שמירה על עמודה אחת למבנה */
     gap: 32px !important;
     padding: 24px !important;
   }
 
+  /* ביטול שינוי הכיוון כדי לשמור על סדר אלמנטים תקין במובייל */
   .project-row--reverse {
-    direction: ltr;
+    direction: rtl; /* החזרה ל-RTL למבנה קריא */
   }
 
   .project-row--reverse > * {
@@ -479,30 +510,41 @@
   }
 
   .project-devices-wrapper {
-    margin-bottom: 0;
+    margin-bottom: 20px; /* הוספת מרווח קטן */
   }
 
+  /* החזרת הפרספקטיבה והמיקום המקורי כמו בווב */
   .project-devices {
-    transform: none !important;
-    perspective: none !important;
-    height: auto;
-    display: flex;
-    justify-content: center;
+    transform: rotateY(-10deg) rotateX(5deg) !important; /* החזרת הזווית הקלה */
+    perspective: 1000px !important; /* החזרת העומק */
+    height: 320px; /* התאמת הגובה כדי להכיל את שני המכשירים */
+    display: block; /* חזרה לתצוגה רגילה */
+    justify-content: unset;
   }
 
-  /* On mobile: show only phone mockup, hide desktop */
+  /* ✦ תיקון קריטי: החזרת המחשב לתצוגה ✦ */
   .device-desktop {
-    display: none !important;
+    display: block !important; /* ביטול ה-display: none */
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 85% !important; /* התאמת הגודל */
+    height: 220px !important;
+    transform: translateZ(0px) !important; /* מיקום בשכבה האחורית */
   }
 
+  /* התאמת הטלפון שיופיע מעל המחשב */
   .device-phone {
-    position: relative !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: none !important;
-    margin: 0 auto !important;
-    width: 160px !important;
-    height: 280px !important;
+    display: block !important;
+    position: absolute !important;
+    bottom: -10px !important; /* מיקום בחלק התחתון */
+    right: 0 !important; /* הצמדה לימין */
+    top: auto !important;
+    left: auto !important;
+    transform: translateZ(40px) !important; /* הגבהה מעל המחשב */
+    margin: 0 !important;
+    width: 100px !important; /* התאמת הגודל למובייל */
+    height: 200px !important;
   }
 
   .project-name {
@@ -524,7 +566,6 @@
     padding: 5px 10px;
   }
 }
-
 /* ── PROCESS — MOBILE ── */
 @media (max-width: 768px) {
   .process-steps {
@@ -1002,7 +1043,7 @@
         <div class="device-desktop">
           <div class="desktop-bar"><span></span><span></span><span></span></div>
           <div class="desktop-screen">
-            <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-23.02.13.png" alt="אתר ג'ינו וינו דסקטופ" loading="lazy"/>
+            <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-23.02.13.png" alt="אתר ג'ינו וינו דסקטופ" loading="lazy" src="project.webp" loading="lazy" width="800" height="600" alt="תיאור"/>
           </div>
           <div class="desktop-bezel-bottom"></div>
           <div class="desktop-stand"></div>
@@ -1010,7 +1051,7 @@
         <div class="device-phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-23.02.41.png" alt="אתר ג'ינו וינו מובייל" loading="lazy"/>
+            <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-23.02.41.png" alt="אתר ג'ינו וינו מובייל" loading="lazy"src="project.webp" loading="lazy" width="800" height="600" alt="תיאור"/>
           </div>
         </div>
       </div>
@@ -1030,7 +1071,7 @@
         <div class="device-desktop">
           <div class="desktop-bar"><span></span><span></span><span></span></div>
           <div class="desktop-screen">
-            <img src="תמונה.jpg/צילום מסך 2026-05-21 ב-12.03.47.png" alt="אתר תכלת הנדסה דסקטופ" loading="lazy"/>
+            <img src="תמונה.jpg/צילום מסך 2026-05-21 ב-12.03.47.png" alt="אתר תכלת הנדסה דסקטופ" loading="lazy"src="project.webp" loading="lazy" width="800" height="600" alt="תיאור"/>
           </div>
           <div class="desktop-bezel-bottom"></div>
           <div class="desktop-stand"></div>
@@ -1038,7 +1079,7 @@
         <div class="device-phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <img src="תמונה.jpg/צילום מסך 2026-05-21 ב-12.04.39.png" alt="אתר תכלת הנדסה מובייל" loading="lazy"/>
+            <img src="תמונה.jpg/צילום מסך 2026-05-21 ב-12.04.39.png" alt="אתר תכלת הנדסה מובייל" loading="lazy" src="project.webp" loading="lazy" width="800" height="600" alt="תיאור"/>
           </div>
         </div>
       </div>
@@ -1058,7 +1099,7 @@
         <div class="device-desktop">
           <div class="desktop-bar"><span></span><span></span><span></span></div>
           <div class="desktop-screen">
-            <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-22.57.51.png" alt="אתר CIALO Boutique דסקטופ" loading="lazy"/>
+            <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-22.57.51.png" alt="אתר CIALO Boutique דסקטופ" loading="lazy" src="project.webp" loading="lazy" width="800" height="600" alt="תיאור"/>
           </div>
           <div class="desktop-bezel-bottom"></div>
           <div class="desktop-stand"></div>
@@ -1066,7 +1107,7 @@
         <div class="device-phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-22.59.59.png" alt="אתר CIALO Boutique מובייל" loading="lazy"/>
+            <img src="תמונה.jpg/צילום מסך 2026-05-20 ב-22.59.59.png" alt="אתר CIALO Boutique מובייל" loading="lazy" src="project.webp" loading="lazy" width="800" height="600" alt="תיאור"/>
           </div>
         </div>
       </div>
@@ -1080,14 +1121,15 @@
     </div>
   </article>
 
+
   <article class="project-row">
     <div class="project-devices-wrapper">
       <div class="project-devices">
-        <div class="device-desktop" style="opacity: 0; pointer-events: none;"></div>
+        
         <div class="device-phone" style="transform: translateZ(40px) scale(1.1); right: 50%; margin-right: -50px;">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <img src="תמונה.jpg/IMG_8454.jpg" alt="Queue App מסך אפליקציה" loading="lazy"/>
+            <img src="תמונה.jpg/IMG_8454.jpg" alt="Queue App מסך אפליקציה" loading="lazy" src="project.webp" loading="lazy" width="800" height="600" alt="תיאור"/>
           </div>
         </div>
       </div>
@@ -1393,18 +1435,45 @@ function sendToWhatsApp() {
     document.body.style.width = '100%';
   }
 
-  function closeMenu() {
-    navLinks.classList.remove('active');
-    menuToggle.classList.remove('open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.setAttribute('aria-label', 'פתח תפריט');
-    overlay.classList.remove('visible');
-    overlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    document.body.style.position = '';
-    document.body.style.width = '';
-  }
+/* תיקון לוגיקה למניעת תקיעות ושיפור יציבות */
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+const overlay = document.querySelector('.mobile-overlay');
 
+function toggleMenu() {
+    const isOpen = navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('open');
+    
+    if (overlay) {
+        isOpen ? overlay.classList.add('visible') : overlay.classList.remove('visible');
+    }
+
+    // מניעת גלילה בצורה בטוחה ללא שינוי ה-position של ה-body
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+// אירוע לחיצה אחיד ומטופל
+if (menuToggle) {
+    menuToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenu();
+    });
+}
+
+if (overlay) {
+    overlay.addEventListener('click', toggleMenu);
+}
+
+// ניקוי אירועי resize כדי למנוע באגים במעבר בין מצבים
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('open');
+        overlay?.classList.remove('visible');
+        document.body.style.overflow = '';
+    }
+});
   menuToggle.addEventListener('click', function() {
     navLinks.classList.contains('active') ? closeMenu() : openMenu();
   });
