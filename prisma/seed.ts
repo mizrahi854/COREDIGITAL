@@ -13,7 +13,6 @@ import { getSlots } from "../src/server/availability";
 
 const prisma = new PrismaClient();
 const TZ = "Asia/Jerusalem";
-const MEDIA_ROOT = path.resolve(process.env.MEDIA_ROOT ?? "./storage");
 const SAMPLE = path.resolve("sample-media");
 export const DEMO_PASSWORD = "buber1234";
 
@@ -220,11 +219,10 @@ const BUSINESSES: BizDef[] = [
   },
 ];
 
-function copy(src: string, key: string) {
-  const dst = path.join(MEDIA_ROOT, key);
-  fs.mkdirSync(path.dirname(dst), { recursive: true });
-  fs.copyFileSync(path.join(SAMPLE, src), dst);
-  return key;
+/** Demo media is served read-only from sample-media/ via the "sample/" key prefix. */
+function sample(file: string) {
+  if (!fs.existsSync(path.join(SAMPLE, file))) throw new Error(`missing sample-media/${file}`);
+  return `sample/${file}`;
 }
 
 async function main() {
@@ -235,7 +233,6 @@ async function main() {
   const tables = await prisma.$queryRaw<{ tablename: string }[]>`
     SELECT tablename FROM pg_tables WHERE schemaname = 'public' AND tablename <> '_prisma_migrations'`;
   await prisma.$executeRawUnsafe(`TRUNCATE ${tables.map((t) => `"${t.tablename}"`).join(", ")} CASCADE`);
-  for (const dir of ["reels", "biz"]) fs.rmSync(path.join(MEDIA_ROOT, dir), { recursive: true, force: true });
 
   const passwordHash = await bcrypt.hash(DEMO_PASSWORD, 10);
   const mkUser = (email: string, name: string, extra: object = {}) =>
@@ -284,8 +281,8 @@ async function main() {
         },
       },
     });
-    const coverPath = copy(`${b.cover}.jpg`, `biz/${biz.id}/cover.jpg`);
-    const avatarPath = copy(`${b.square}.jpg`, `biz/${biz.id}/avatar.jpg`);
+    const coverPath = sample(`${b.cover}.jpg`);
+    const avatarPath = sample(`${b.square}.jpg`);
     await prisma.business.update({ where: { id: biz.id }, data: { coverPath, avatarPath } });
 
     const staffIds: string[] = [];
@@ -360,9 +357,9 @@ async function main() {
       await prisma.reel.update({
         where: { id: reel.id },
         data: {
-          videoPath: copy(`${r.video}.mp4`, `reels/${reel.id}/video.mp4`),
-          webmPath: copy(`${r.video}.webm`, `reels/${reel.id}/video.webm`),
-          thumbPath: copy(`${r.video}.jpg`, `reels/${reel.id}/thumb.jpg`),
+          videoPath: sample(`${r.video}.mp4`),
+          webmPath: sample(`${r.video}.webm`),
+          thumbPath: sample(`${r.video}.jpg`),
         },
       });
       reels.push(reel.id);
@@ -371,7 +368,7 @@ async function main() {
     // Portfolio: stills from the same sample art
     for (const [i, r] of b.reels.slice(0, 3).entries()) {
       await prisma.portfolioItem.create({
-        data: { businessId: biz.id, imagePath: copy(`${r.video}.jpg`, `biz/${biz.id}/portfolio-${i}.jpg`), caption: r.caption, isSample: true },
+        data: { businessId: biz.id, imagePath: sample(`${r.video}.jpg`), caption: r.caption, isSample: true },
       });
     }
     created[b.key] = { id: biz.id, services, staff: staffIds, reels };

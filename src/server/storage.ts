@@ -18,6 +18,9 @@ export interface MediaStorage {
 }
 
 const ROOT = path.resolve(process.env.MEDIA_ROOT ?? "./storage");
+/** Bundled demo media ("sample/<file>") is read-only and ships with the app. */
+const SAMPLE_ROOT = path.resolve(process.env.SAMPLE_MEDIA_ROOT ?? "./sample-media");
+const SAMPLE_PREFIX = "sample/";
 
 export function safeKey(key: string) {
   const norm = path.posix.normalize(key).replace(/^\/+/, "");
@@ -29,15 +32,21 @@ export function safeKey(key: string) {
 
 class LocalStorage implements MediaStorage {
   localPath(key: string) {
-    return path.join(ROOT, safeKey(key));
+    const k = safeKey(key);
+    if (k.startsWith(SAMPLE_PREFIX)) return path.join(SAMPLE_ROOT, k.slice(SAMPLE_PREFIX.length));
+    return path.join(ROOT, k);
+  }
+  private writable(key: string) {
+    if (safeKey(key).startsWith(SAMPLE_PREFIX)) throw new Error("sample media is read-only");
+    return this.localPath(key);
   }
   async put(key: string, data: Buffer) {
-    const p = this.localPath(key);
+    const p = this.writable(key);
     await fs.mkdir(path.dirname(p), { recursive: true });
     await fs.writeFile(p, data);
   }
   async putFile(key: string, sourcePath: string) {
-    const p = this.localPath(key);
+    const p = this.writable(key);
     await fs.mkdir(path.dirname(p), { recursive: true });
     await fs.copyFile(sourcePath, p);
   }
@@ -53,7 +62,7 @@ class LocalStorage implements MediaStorage {
     return createReadStream(this.localPath(key), range);
   }
   async remove(prefix: string) {
-    await fs.rm(this.localPath(prefix), { recursive: true, force: true });
+    await fs.rm(this.writable(prefix), { recursive: true, force: true });
   }
 }
 
