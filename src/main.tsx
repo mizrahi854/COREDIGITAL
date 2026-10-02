@@ -81,6 +81,10 @@ const routes: RouteObject[] = [
   },
 ];
 
+// Hebrew RTL even when the page is embedded in a host document that does not set it
+document.documentElement.lang = "he";
+document.documentElement.dir = "rtl";
+
 // The hosted demo runs inside a sandboxed frame where URL hashes are not shareable, so it uses an in-memory router.
 const router = import.meta.env.VITE_ROUTER === "memory" ? createMemoryRouter(routes) : createHashRouter(routes);
 
