@@ -10,7 +10,7 @@ import { spawn } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
-const OUT = path.resolve("sample-media");
+const OUT = path.resolve("public/media");
 const FPS = 24;
 const SECONDS = 7;
 
@@ -31,6 +31,10 @@ export const PALETTES: Record<string, Palette> = {
   rose: { bg1: "#ead7cf", bg2: "#a77d70", pans: ["#c98e86", "#e6c2a6", "#9c5b5b", "#d9a98a", "#b9786b", "#f0d6c1", "#8e5a4c", "#c7a07a", "#a8686a"] },
   bronze: { bg1: "#2b1d16", bg2: "#0e0806", pans: ["#b9874f", "#e5c08f", "#7d4a2b", "#d29d6a", "#9e6b3f", "#f2d7ae", "#5e3620", "#c8955d", "#8a5a35"] },
   lashSoft: { bg1: "#ecd8c8", bg2: "#b48c74", liner: "#2a1a14", brow: "#5a3d2e" },
+  serum: { bg1: "#e9ecef", bg2: "#9aa3ad", glass1: "rgba(210,225,235,0.55)", glass2: "rgba(255,255,255,0.85)", liquid: "rgba(232,190,120,0.75)", cap: "#1c1c1e", drop: "rgba(240,200,140,0.8)" },
+  serumDark: { bg1: "#2a2d33", bg2: "#0d0e10", glass1: "rgba(140,160,175,0.45)", glass2: "rgba(230,240,248,0.75)", liquid: "rgba(196,226,214,0.7)", cap: "#e9ecef", drop: "rgba(200,235,220,0.8)" },
+  lipRed: { bg1: "#efe9e6", bg2: "#a99a94", lip1: "#7d1622", lip2: "#b52a37" },
+  lipNude: { bg1: "#30282a", bg2: "#0f0b0c", lip1: "#9a5a52", lip2: "#c98a7d" },
   lashDeep: { bg1: "#c49a80", bg2: "#6e4a38", liner: "#170d09", brow: "#3a2519" },
 };
 
@@ -53,6 +57,10 @@ export const VIDEOS: { name: string; scene: string; palette: string }[] = [
   { name: "makeup-bronze", scene: "palette", palette: "bronze" },
   { name: "lashes-soft", scene: "lashes", palette: "lashSoft" },
   { name: "lashes-deep", scene: "lashes", palette: "lashDeep" },
+  { name: "skincare-light", scene: "skincare", palette: "serum" },
+  { name: "skincare-dark", scene: "skincare", palette: "serumDark" },
+  { name: "lips-red", scene: "lips", palette: "lipRed" },
+  { name: "lips-nude", scene: "lips", palette: "lipNude" },
 ];
 
 export const COVERS: { name: string; scene: string; palette: string }[] = [
@@ -63,6 +71,11 @@ export const COVERS: { name: string; scene: string; palette: string }[] = [
   { name: "cover-makeup", scene: "palette", palette: "rose" },
   { name: "cover-lashes", scene: "lashes", palette: "lashSoft" },
   { name: "cover-braid", scene: "braid", palette: "ash" },
+  { name: "cover-skincare", scene: "skincare", palette: "serum" },
+  { name: "cover-lips", scene: "lips", palette: "lipRed" },
+  { name: "cover-brows", scene: "lashes", palette: "lashDeep" },
+  { name: "cover-color", scene: "hair", palette: "copper" },
+  { name: "cover-gel", scene: "nails", palette: "burgundy" },
 ];
 
 function encode(args: string[]) {

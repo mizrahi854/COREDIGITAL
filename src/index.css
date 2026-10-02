@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+/*
+ * Beautigo design tokens.
+ * Palette (spec): #FFFFFF background · #F5F5F7 surface · #111111 text & primary buttons ·
+ * #63636B secondary text · #E5E5EA dividers. No cream/beige/gold/brown/pink UI.
+ * Spacing on a 4/8 grid, card radius 20–28, pill buttons 48–52 tall, 44px minimum touch target.
+ */
+@theme {
+  --font-sans: "Heebo Variable", "Heebo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-inverse: var(--ink-inverse);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --radius-card: 24px;
+  --animate-rise: rise 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-fade: fade 180ms ease-out both;
+  --animate-pop: pop 260ms cubic-bezier(0.3, 1.5, 0.5, 1) both;
+  --animate-heart: heart 760ms ease-out both;
+}
+
+:root,
+[data-theme="light"] {
+  --bg: #ffffff;
+  --surface: #f5f5f7;
+  --surface-2: #ececf0;
+  --ink: #111111;
+  --ink-inverse: #ffffff;
+  --muted: #63636b;
+  --line: #e5e5ea;
+  --ok: #1d7a43;
+  --ok-soft: #e7f5ec;
+  --warn: #8a5300;
+  --warn-soft: #fdf1df;
+  --bad: #c0262d;
+  --bad-soft: #fdeaea;
+  --info: #1f5fbf;
+  --info-soft: #e9f0fc;
+  --glass-rgb: 255 255 255;
+  --glass-text: #111111;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 10px 30px -12px rgb(0 0 0 / 0.18);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0b0b0c;
+  --surface: #1c1c1e;
+  --surface-2: #2a2a2d;
+  --ink: #f5f5f7;
+  --ink-inverse: #111111;
+  --muted: #a1a1a8;
+  --line: #2c2c2e;
+  --ok: #4cc27c;
+  --ok-soft: #12301f;
+  --warn: #f0b252;
+  --warn-soft: #36270d;
+  --bad: #ff6b6b;
+  --bad-soft: #3a1416;
+  --info: #7fb0ff;
+  --info-soft: #14243f;
+  --glass-rgb: 28 28 30;
+  --glass-text: #f5f5f7;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px -12px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+/* Liquid Glass: alpha/blur are driven by the "glass intensity" setting (see useAppearance). */
+:root {
+  --glass-alpha: 0.72;
+  --glass-blur: 22px;
+  --media-brightness: 1;
+}
+
+.glass {
+  background: rgb(var(--glass-rgb) / var(--glass-alpha));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(170%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(170%);
+  border: 1px solid rgb(255 255 255 / 0.55);
+  box-shadow: var(--shadow), inset 0 1px 0 rgb(255 255 255 / 0.5);
+  color: var(--glass-text);
+}
+[data-theme="dark"] .glass {
+  border-color: rgb(255 255 255 / 0.08);
+  box-shadow: var(--shadow), inset 0 1px 0 rgb(255 255 255 / 0.06);
+}
+/* Glass over video: always white glass with dark text for legibility */
+.glass-light {
+  background: rgb(255 255 255 / max(var(--glass-alpha), 0.78));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(170%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(170%);
+  border: 1px solid rgb(255 255 255 / 0.6);
+  color: #111111;
+}
+.glass-dark {
+  background: rgb(0 0 0 / 0.32);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: #ffffff;
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: rgb(var(--glass-rgb) / 0.97); }
+  .glass-light { background: #ffffff; }
+  .glass-dark { background: rgb(0 0 0 / 0.62); }
+}
+[data-transparency="reduce"] .glass {
+  background: var(--bg);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-color: var(--line);
+}
+[data-transparency="reduce"] .glass-light { background: #ffffff; backdrop-filter: none; -webkit-backdrop-filter: none; }
+[data-transparency="reduce"] .glass-dark { background: rgb(0 0 0 / 0.7); backdrop-filter: none; -webkit-backdrop-filter: none; }
+
+/* Media appearance control: changes only the photos/videos inside the app */
+.media { filter: brightness(var(--media-brightness)); }
+
+html {
+  font-size: calc(16px * var(--text-scale, 1));
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
+#root { min-height: 100dvh; }
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+.on-media :focus-visible { outline-color: #ffffff; }
+
+/* Directional icons flip in RTL (arrows, chevrons). Symmetric icons never flip. */
+[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
+
+.num { font-variant-numeric: tabular-nums; unicode-bidi: isolate; }
+.ltr { direction: ltr; unicode-bidi: isolate; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+.text-shadow { text-shadow: 0 1px 10px rgb(0 0 0 / 0.5); }
+.safe-top { padding-top: env(safe-area-inset-top, 0px); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop { 0% { transform: scale(1); } 45% { transform: scale(1.25); } 100% { transform: scale(1); } }
+@keyframes heart {
+  0% { opacity: 0; transform: scale(0.4); }
+  25% { opacity: 1; transform: scale(1.15); }
+  65% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.05); }
+}
+@keyframes shimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+.skeleton {
+  background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s linear infinite;
+}
+
+[data-motion="reduce"] *,
+[data-motion="reduce"] *::before,
+[data-motion="reduce"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
